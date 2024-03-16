@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseUserManagement.Applicat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseUserManagement.Domain", "BaseUserManagement.Domain\BaseUserManagement.Domain.csproj", "{599DC59D-607D-4A00-B62F-E56E68A8133E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseUserManagement.Infrastructure", "BaseUserManagement.Infrastructure\BaseUserManagement.Infrastructure.csproj", "{2FAA3EFB-726D-47B9-90C4-25E68F12D8A6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{599DC59D-607D-4A00-B62F-E56E68A8133E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{599DC59D-607D-4A00-B62F-E56E68A8133E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{599DC59D-607D-4A00-B62F-E56E68A8133E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FAA3EFB-726D-47B9-90C4-25E68F12D8A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FAA3EFB-726D-47B9-90C4-25E68F12D8A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FAA3EFB-726D-47B9-90C4-25E68F12D8A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FAA3EFB-726D-47B9-90C4-25E68F12D8A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
