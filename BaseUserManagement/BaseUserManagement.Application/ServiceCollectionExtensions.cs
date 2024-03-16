@@ -1,3 +1,6 @@
+using BaseUserManagement.Application.Behaviors;
+using FluentValidation;
+using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -7,6 +10,14 @@ public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddApplicationConfigurations(this IServiceCollection services, IConfiguration configuration)
     {
-        return services;
+        return services
+            .AddBehaviors();
+    }
+
+    private static IServiceCollection AddBehaviors(this IServiceCollection services)
+    {
+        return services
+            .AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationPipelineBehavior<,>))
+            .AddValidatorsFromAssembly(typeof(ServiceCollectionExtensions).Assembly, includeInternalTypes: true);
     }
 }
