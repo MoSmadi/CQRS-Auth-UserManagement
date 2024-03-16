@@ -1,0 +1,20 @@
+# Default ignored files
+bin/
+obj/
+/packages/
+riderModule.iml
+/_ReSharper.Caches/
+/shelf/
+/workspace.xml
+# Rider ignored files
+/projectSettingsUpdater.xml
+/.idea.IdentityBase.iml
+/contentModel.xml
+/modules.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+# GitHub Copilot persisted chat sessions
+/copilot/chatSessions
