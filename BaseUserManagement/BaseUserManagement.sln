@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Host", "Host\Host.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseUserManagement.Api", "BaseUserManagement.Api\BaseUserManagement.Api.csproj", "{A077BD92-A9A8-42F2-A477-41A0C411D069}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseUserManagement.Application", "BaseUserManagement.Application\BaseUserManagement.Application.csproj", "{D7E0D16A-A290-4FD3-B532-D4712F6F79EF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{A077BD92-A9A8-42F2-A477-41A0C411D069}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A077BD92-A9A8-42F2-A477-41A0C411D069}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A077BD92-A9A8-42F2-A477-41A0C411D069}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7E0D16A-A290-4FD3-B532-D4712F6F79EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7E0D16A-A290-4FD3-B532-D4712F6F79EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7E0D16A-A290-4FD3-B532-D4712F6F79EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7E0D16A-A290-4FD3-B532-D4712F6F79EF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
