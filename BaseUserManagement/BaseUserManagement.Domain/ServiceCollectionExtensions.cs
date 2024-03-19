@@ -1,4 +1,4 @@
-using BaseUserManagement.Domain.Services;
+using BaseUserManagement.Domain.Users.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -14,5 +14,6 @@ public static class ServiceCollectionExtensions
 
     private static IServiceCollection AddDomainServices(this IServiceCollection services) =>
         services
+            .AddScoped<IUserContext, UserContext>()
             .AddScoped<IUserService, UserService>();
 }

@@ -1,7 +1,7 @@
 using BaseUserManagement.Domain.Users.Models;
 using BaseUserManagement.Domain.Validations;
 
-namespace BaseUserManagement.Domain.Services;
+namespace BaseUserManagement.Domain.Users.Services;
 
 public interface IUserService
 {
