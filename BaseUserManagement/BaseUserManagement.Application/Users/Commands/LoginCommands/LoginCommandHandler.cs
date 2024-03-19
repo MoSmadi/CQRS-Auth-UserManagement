@@ -7,6 +7,6 @@ public class LoginCommandHandler : ICommandHandler<LoginCommand, string>
 {
     public async Task<Result<string>> Handle(LoginCommand request, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        return Result.Success("token");
     }
 }
