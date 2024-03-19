@@ -17,6 +17,7 @@ public static class ServiceCollectionExtensions
     private static IServiceCollection AddBehaviors(this IServiceCollection services)
     {
         return services
+            .AddMediatR(ApplicationAssemblyReference.Assembly)
             .AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationPipelineBehavior<,>))
             .AddValidatorsFromAssembly(typeof(ServiceCollectionExtensions).Assembly, includeInternalTypes: true);
     }
