@@ -1,5 +1,6 @@
 using BaseUserManagement.Application.Abstractions.Messaging;
 using BaseUserManagement.Application.Users.Models.Responses;
+using BaseUserManagement.Domain.Authentication;
 using BaseUserManagement.Domain.Users.Services;
 using BaseUserManagement.Domain.Validations;
 
@@ -8,10 +9,12 @@ namespace BaseUserManagement.Application.Users.Commands.LoginCommands;
 public class LoginCommandHandler : ICommandHandler<LoginCommand, LoginResponse>
 {
     private readonly IUserService _userService;
+    private readonly IJwtProvider _jwtProvider;
 
-    public LoginCommandHandler(IUserService userService)
+    public LoginCommandHandler(IUserService userService, IJwtProvider jwtProvider)
     {
         _userService = userService;
+        _jwtProvider = jwtProvider;
     }
 
     public async Task<Result<LoginResponse>> Handle(LoginCommand request, CancellationToken cancellationToken)
@@ -23,8 +26,8 @@ public class LoginCommandHandler : ICommandHandler<LoginCommand, LoginResponse>
             return Result.Failure<LoginResponse>(userResult.Error);
         }
         
-        var userToken = new LoginResponse("Token");
+        var token = _jwtProvider.GenerateJwtToken(userResult.Value);
         
-        return Result.Success(userToken);
+        return Result.Success(new LoginResponse(token));
     }
 }
