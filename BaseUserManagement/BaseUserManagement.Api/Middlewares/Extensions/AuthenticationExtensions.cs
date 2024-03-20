@@ -20,10 +20,18 @@ public static class AuthenticationExtensions
     {
         var token = headers.ExtractToken();
         var handler = new JwtSecurityTokenHandler();
-        var jsonToken = handler.ReadJwtToken(token);
-        var sub = jsonToken?.Claims.First(claim => claim.Type == AuthenticationConstants.SubClaimType).Value;
+        
+        try
+        { 
+            var jsonToken = handler.ReadJwtToken(token);
+            var sub = jsonToken?.Claims.First(claim => claim.Type == AuthenticationConstants.SubClaimType).Value;
 
-        return Guid.TryParse(sub, out var id) ? id : null;
+            return Guid.TryParse(sub, out var id) ? id : null;
+        }
+        catch (Exception)
+        {
+            return null;
+        }
     }
     
     private static string ExtractToken(this IHeaderDictionary headers)
