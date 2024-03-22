@@ -39,11 +39,11 @@ public static class ServiceCollectionExtensions
         services
             .AddDbContext<BaseDbContext>(options =>
             {
-                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+                options.UseSqlServer(configuration.GetConnectionString(ServiceCollectionConstants.BaseDbConnection));
             });
     
     private static IServiceCollection AddAJwtOptions(this IServiceCollection services, IConfiguration configuration) =>
         services
-            .Configure<JwtOptions>(configuration.GetSection("JwtSettings"))
+            .Configure<JwtOptions>(configuration.GetSection(ServiceCollectionConstants.JwtSettings))
             .ConfigureOptions<JwtOptionsSetup>();
 }
