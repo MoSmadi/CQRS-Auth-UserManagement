@@ -3,6 +3,7 @@ using BaseUserManagement.Domain.Users.Repositories;
 using BaseUserManagement.Infrastructure.Authentication;
 using BaseUserManagement.Infrastructure.Authentication.JwtSetup;
 using BaseUserManagement.Infrastructure.Authentication.Options;
+using BaseUserManagement.Infrastructure.Users.Mappers;
 using BaseUserManagement.Infrastructure.Users.Repositories;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,8 +17,13 @@ public static class ServiceCollectionExtensions
         return services
                 .AddRepositories()
                 .AddProviders()
+                .AddMappers()
                 .AddAJwtOptions(configuration);
     }
+    
+    private static IServiceCollection AddMappers(this IServiceCollection services) =>
+        services
+            .AddSingleton<UserMapper>();
     
     private static IServiceCollection AddRepositories(this IServiceCollection services) =>
         services
