@@ -3,7 +3,9 @@ using BaseUserManagement.Domain.Users.Repositories;
 using BaseUserManagement.Infrastructure.Authentication;
 using BaseUserManagement.Infrastructure.Authentication.JwtSetup;
 using BaseUserManagement.Infrastructure.Authentication.Options;
+using BaseUserManagement.Infrastructure.Users.Mappers;
 using BaseUserManagement.Infrastructure.Users.Repositories;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -16,8 +18,14 @@ public static class ServiceCollectionExtensions
         return services
                 .AddRepositories()
                 .AddProviders()
+                .AddMappers()
+                .AddDbConnection(configuration)
                 .AddAJwtOptions(configuration);
     }
+    
+    private static IServiceCollection AddMappers(this IServiceCollection services) =>
+        services
+            .AddSingleton<UserMapper>();
     
     private static IServiceCollection AddRepositories(this IServiceCollection services) =>
         services
@@ -27,9 +35,16 @@ public static class ServiceCollectionExtensions
         services
             .AddScoped<IJwtProvider, JwtProvider>();
 
+    private static IServiceCollection AddDbConnection(this IServiceCollection services, IConfiguration configuration) =>
+        services
+            .AddDbContext<BaseDbContext>(options =>
+            {
+                options.UseSqlServer(configuration.GetConnectionString(ServiceCollectionConstants.BaseDbConnection));
+            });
+    
     private static IServiceCollection AddAJwtOptions(this IServiceCollection services, IConfiguration configuration) =>
         services
-            .Configure<JwtOptions>(configuration.GetSection("JwtSettings"))
+            .Configure<JwtOptions>(configuration.GetSection(ServiceCollectionConstants.JwtSettings))
             .ConfigureOptions<JwtOptionsSetup>()
             .ConfigureOptions<JwtBearerOptionsSetup>();
 }
