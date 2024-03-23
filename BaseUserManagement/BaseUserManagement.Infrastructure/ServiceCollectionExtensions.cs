@@ -45,5 +45,6 @@ public static class ServiceCollectionExtensions
     private static IServiceCollection AddAJwtOptions(this IServiceCollection services, IConfiguration configuration) =>
         services
             .Configure<JwtOptions>(configuration.GetSection(ServiceCollectionConstants.JwtSettings))
-            .ConfigureOptions<JwtOptionsSetup>();
+            .ConfigureOptions<JwtOptionsSetup>()
+            .ConfigureOptions<JwtBearerOptionsSetup>();
 }
